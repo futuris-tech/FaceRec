@@ -155,7 +155,7 @@ void compare_work(int thread_id) {
 }
 
 int main() {
-	_chdir("C:\\Users\\admin\\Downloads\\yalefaces");
+	_chdir("images");
 	cpu_num = thread::hardware_concurrency();
 	cout << left << "0%\r";
 
