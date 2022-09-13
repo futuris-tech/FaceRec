@@ -67,8 +67,8 @@ struct attr_vector {
 
 		memset(value, 0, sizeof(value));
 		auto count = file->width * file->height;
-		for (int i = 0; i < count; i++)
-			value[file->frame[i] / color_group_size]++;
+		/*for (int i = 0; i < count; i++)
+			value[file->frame[i] / color_group_size]++;*/
 		/*default_random_engine dre(chrono::system_clock::now().time_since_epoch().count());
 		auto count_16 = count;
 		auto cx = (file->width-1) * 0.5;
@@ -81,6 +81,10 @@ struct attr_vector {
 			auto y = cy + sin(a) * r;
 			value[file->frame[(int)x + (int)y*file->width] / color_group_size]++;
 		}*/
+		default_random_engine dre(chrono::system_clock::now().time_since_epoch().count());
+		auto count_20 = count / 20;
+		for (int i = 0; i < count_20; i++)
+			value[file->frame[dre(0) % count] / color_group_size]++;
 
 		gd_close_gif(file);
 	}
